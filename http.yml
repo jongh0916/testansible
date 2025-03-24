@@ -15,7 +15,7 @@
     - name: 포트변경
       lineinfile:
         dest: /etc/httpd/conf/httpd.conf
-        regexp: '^Listen [0-9]{1,5}$'
+        regexp: '^Listen\s+[0-9]{1,5}$'
         line: Listen {{ webport }}
       notify:
         - restartweb
