@@ -1,0 +1,30 @@
+# vartest.yml
+
+- name: var test
+  hosts: localhost
+  gather_facts: true    # default
+  become: true
+  vars:
+    myname: "홍길동"
+  vars_files:
+    vars.yml
+  tasks:
+    - name: tes1
+      debug:    # 로그 실행
+        msg: "테스트 로그"
+
+    - name: test2
+      debug:
+        msg: "패키지 매니저: {{ ansible_pkg_mgr }}, 배포판: {{ ansible_distribution }}"
+
+    - name: test3
+      debug:
+        msg: "나의 이름: {{ myname }}"
+
+    - name: test4
+      debug:
+        msg: "file1: {{ name1 }}"
+
+    - name: test5
+      debug:
+        msg: "file2: {{ names[0] }}, {{ names[1] }}, {{ names[2] }}"
